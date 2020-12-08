@@ -1,5 +1,5 @@
 4
-192.168.70.1
+127.0.0.1
 user
 pass
 PUT C:\windows\system32\calc.exe
