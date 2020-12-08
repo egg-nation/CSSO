@@ -1,0 +1,8 @@
+4
+192.168.70.1
+user
+pass
+PUT C:\windows\system32\calc.exe
+RUN calc.exe
+PUT C:\windows\system32\cmd.exe
+RUN cmd.exe
