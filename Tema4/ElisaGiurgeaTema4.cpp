@@ -41,8 +41,9 @@ int commands(vector<string> contentLines, string link, string username, string p
 {
 	HINTERNET internetHandle;
 	HINTERNET ftpSession;
+
 	internetHandle = InternetOpen(
-		NULL, 
+		NULL,
 		INTERNET_OPEN_TYPE_DIRECT, 
 		NULL,
 		NULL, 
@@ -149,8 +150,8 @@ string download_file_from_http(LPCWSTR link)
 	HINTERNET fileHandle;
 
 	char buffer[1024];
-	DWORD bytes_read;
-	int flag = 0, size;
+	DWORD bytesRead;
+	unsigned int flag = 0, size;
 
 	internetHandle = InternetOpen(
 		L"",
@@ -193,14 +194,14 @@ string download_file_from_http(LPCWSTR link)
 			fileHandle,
 			buffer,
 			sizeof(buffer),
-			&bytes_read))
+			&bytesRead))
 		{
-			if (bytes_read == 0)
+			if (!bytesRead)
 			{
 				flag = 1;
 				buffer[size] = '\0';
 			}
-			size = bytes_read;
+			size = bytesRead;
 		}
 		else
 		{
