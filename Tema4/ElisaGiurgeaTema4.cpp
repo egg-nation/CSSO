@@ -80,13 +80,14 @@ int commands(vector<string> contentLines, string link, string username, string p
 	for (auto line : contentLines)
 	{
 		auto tokens = parse(line);
-		string command = tokens[0];
-		string parameter = tokens[1];
+
+		string command = tokens.at(0);
+		string parameter = tokens.at(1);
 
 		if (command == "PUT")
 		{
-			auto vec = parse(parameter, '\\');
-			string ftpPath = vec[vec.size() - 1];
+			auto array = parse(parameter, '\\');
+			string ftpPath = array.at(array.size() - 1);
 
 			if (!FtpPutFileA(
 				ftpSession,
@@ -198,8 +199,8 @@ string download_file_from_http(LPCWSTR link)
 		{
 			if (!bytesRead)
 			{
-				flag = 1;
 				buffer[size] = '\0';
+				flag = 1;
 			}
 			size = bytesRead;
 		}
